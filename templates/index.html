@@ -1,0 +1,374 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'assets/image/favicon.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'assets/dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/icons/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/media.css' %}">
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <title>Ai powered e-learning platform - Home</title>
+</head>
+<body>
+
+    <!-- =========================== sidebar section ========================== -->
+    <nav id="sidebar">
+        <div class="side-content">
+            <div class="side-logo py-2">
+                <img width="150" src="{% static 'assets/image/logo.png' %}" alt="Logo">
+            </div>
+            <div class="middle">
+                <div class="side-line"></div>
+                <div class="side-right margin">
+                    <div class="side-item mb-3">
+                        <a href="{% url 'index' %}">Home</a>
+                    </div>
+                    <div class="side-item mb-3">
+                        <a href="{% url 'about' %}">About</a>
+                    </div>
+                    <!-- <div class="side-item mb-3">
+                        <a href="{% url 'courses' %}">Courses</a>
+                    </div> -->
+                    <div class="side-item mb-3">
+                        <a href="{% url 'contact_us' %}">Contact Us</a>
+                    </div>
+
+                    <div class="nav-cta">
+                        <a href="{% url 'login' %}">
+                            <button class="main-btn w-100">Sign In</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- =========================== end of sidebar section ========================== -->
+
+    <!-- ================================== navbar section ================================ -->
+    <section class="all-navbar">
+        <div class="navbar-content margin">
+            <div class="nav-left">
+                <img width="50" src="{% static 'assets/image/logo.png' %}" alt="Logo">
+            </div>
+            <div class="nav-right">
+                <a href="{% url 'index' %}">Home</a>
+                <a href="{% url 'about' %}">About</a>
+                <!-- <a href="{% url 'courses' %}">Courses</a> -->
+                <a href="{% url 'contact_us' %}">Contact Us</a>
+                <div class="nav-cta">
+                    <a href="{% url 'login' %}">
+                        <button class="main-btn">Sign In</button>
+                    </a>
+                </div>
+            </div>
+            <div id="bars">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </section>
+    <!-- ================================== end of navbar section ================================ -->
+
+    <!-- ========================================= hero section ================================ -->
+    <section class="all-hero">
+        <div class="hero-content margin">
+            <div class="hero-left" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                <h1>
+                    <span>Learn Smarter,</span>
+                    <span>Excel Faster with</span>
+                    <span id="typing-text"></span>
+                </h1>
+                <div class="hero-cta mt-3" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300">
+                    <a href="{% url 'login' %}">
+                        <button class="main-1-btn">Get Started</button>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-right">
+                <img src="{% static 'assets/image/robot.png' %}" alt="Robot" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300">
+            </div>
+        </div>
+    </section>
+    <!-- ========================================= end of hero section ================================ -->
+
+    <!-- ================================ about section ======================================== -->
+    <section class="all-about">
+        <div class="about-content margin">
+            <div class="about-left">
+                <img src="{% static 'assets/image/20250623_012225.png' %}" alt="About Image" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300">
+            </div>
+            <div class="about-right">
+                <div class="about-head" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300">
+                    <h6>ABOUT US</h6>
+                </div>
+                <h1 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    <span>Empowering Young Minds through Innovative Learning</span>
+                </h1>
+                <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">At MyClassAI, we're dedicated to empowering the next generation of learners and thinkers. Our AI-powered e-learning platform is designed to provide a fun, interactive, and personalized learning experience for children, while also supporting parents and educators in their journey.</p>
+                <ul data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    <li>Personalized Learning Paths</li>
+                    <li>Interactive Content</li>
+                    <li>Progress Tracking</li>
+                    <li>Expertly Designed Curriculum</li>
+                </ul>
+                <div class="about-cta pt-3">
+                    <a href="{% url 'about' %}">
+                        <button class="main-1-btn py-3" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300">Discover More</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ================================ end of about section ======================================== -->
+
+    <!-- ======================================== account section ======================================== -->
+    <section class="all-account">
+        <div class="account-content margin">
+            <a href="{% url 'login' %}">
+                <div class="account-item" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    <img src="{% static 'assets/image/about-3-vision-icon.png' %}" alt="Students Account Icon">
+                    <h5>Students Account</h5>
+                </div>
+            </a>
+            <a href="">
+                <div class="account-item" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300">
+                    <img src="{% static 'assets/image/about-3-vision-icon.png' %}" alt="Parents Account Icon">
+                    <h5>Parents Account</h5>
+                </div>
+            </a>
+        </div>
+    </section>
+    <!-- ======================================== end of account section ======================================== -->
+
+    <!-- ===================================== outcome section ====================================================== -->
+    <section class="all-outcome">
+        <div class="outcome-content margin">
+            <div class="outcome-right" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                <h1>Learner outcomes on MyClassAI</h1>
+                <ul>
+                    <li>The knowledge, skills and competencis students acquire and demonstrate through their participation in the AI class.</li>
+                    <li>The specific achievements and understanding students gain from the AI course, including concepts, applications, and critical thinking.</li>
+                    <li>The mbeasurable results and insights students obtain from AI class, reflecting their msstery of AI concepts and techniques.</li>
+                    <li>The skills, understanding, and abilities students develop and apply in the AI class, preparing them for real-world applications and future learning.</li>
+                </ul>
+                <p><strong>77% of learners report career benefits,</strong> such as new skills, increased pay, and new job opportunities. <a href="#">2025 MyClassAI Learner Outcomes Report</a></p>
+                <div class="outcome-cta">
+                    <a href="{% url 'login' %}">
+                        <button class="main-1-btn py-3" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300">Join for Free</button>
+                    </a>
+                </div>
+            </div>
+            <div class="outcome-left">
+                <img src="{% static 'assets/image/outcomes.png' %}" alt="Outcomes Image" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300">
+            </div>
+        </div>
+    </section>
+    <!-- ===================================== end of outcome section ====================================================== -->
+
+    <!-- ======================================= testimonial section ================================================= -->
+    <section class="trusted-content margin pt-3 pb-5">
+        <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+            <span>Real users, real experiences! See what our happy</span>
+            <span>students have to say!</span>
+        </p>
+        <div class="testimonial" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300">
+            <div class="testionial-content">
+                <div class="user-testimony">
+                    <div class="person mb-2">
+                        <h6><img src="{% static 'assets/faces/7.jpeg' %}" alt="User 1"></h6>
+                        <div class="name">
+                            <h5>Oge Poch</h5>
+                            <h6>Abakaliki City</h6>
+                        </div>
+                    </div>
+                    <div class="testimony">
+                        <p>EazeeHub ipsum dolor sit amet consectetur adipisicing elit. Ipsa cum nihil dolor temporibus minima itaque esse fugiat consequatur, aut dicta nulla a, ullam aperiam aliquid quidem illum est excepturi at?</p>
+                    </div>
+                </div>
+                <div class="user-testimony">
+                    <div class="person mb-2">
+                        <h6><img src="{% static 'assets/faces/1.jpg' %}" alt="User 2"></h6>
+                        <div class="name">
+                            <h5>Mirabel Dinis</h5>
+                            <h6>Abakaliki City</h6>
+                        </div>
+                    </div>
+                    <div class="testimony">
+                        <p>Handyman ipsum dolor sit amet consectetur adipisicing elit. Ipsa cum nihil dolor temporibus minima itaque esse fugiat consequatur, aut dicta nulla a, ullam aperiam aliquid quidem illum est excepturi at?</p>
+                    </div>
+                </div>
+                <div class="user-testimony">
+                    <div class="person mb-2">
+                        <h6><img src="{% static 'assets/faces/3.jpeg' %}" alt="User 3"></h6>
+                        <div class="name">
+                            <h5>Thompson .O.</h5>
+                            <h6>Lagos City</h6>
+                        </div>
+                    </div>
+                    <div class="testimony">
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa cum nihil dolor temporibus minima itaque esse fugiat consequatur, aut dicta nulla a, ullam aperiam aliquid quidem illum est excepturi at?</p>
+                    </div>
+                </div>
+                <div class="user-testimony">
+                    <div class="person mb-2">
+                        <h6><img src="{% static 'assets/faces/4.jpeg' %}" alt="User 4"></h6>
+                        <div class="name">
+                            <h5>Florence .S.</h5>
+                            <h6>Abuja City</h6>
+                        </div>
+                    </div>
+                    <div class="testimony">
+                        <p>food ipsum dolor sit amet consectetur adipisicing elit. Ipsa cum nihil dolor temporibus minima itaque esse fugiat consequatur, aut dicta nulla a, ullam aperiam aliquid quidem illum est excepturi at?</p>
+                    </div>
+                </div>
+                <div class="user-testimony">
+                    <div class="person mb-2">
+                        <h6><img src="{% static 'assets/faces/6.jpeg' %}" alt="User 5"></h6>
+                        <div class="name">
+                            <h5>Sophia</h5>
+                            <h6>Abakaliki City</h6>
+                        </div>
+                    </div>
+                    <div class="testimony">
+                        <p>plumber ipsum dolor sit amet consectetur adipisicing elit. Ipsa cum nihil dolor temporibus minima itaque esse fugiat consequatur, aut dicta nulla a, ullam aperiam aliquid quidem illum est excepturi at?</p>
+                    </div>
+                </div>
+                <div class="user-testimony">
+                    <div class="person mb-2">
+                        <h6><img src="{% static 'assets/faces/2.jpg' %}" alt="User 6"></h6>
+                        <div class="name">
+                            <h5>Peter .T.</h5>
+                            <h6>Lagos City</h6>
+                        </div>
+                    </div>
+                    <div class="testimony">
+                        <p>book ride ipsum dolor sit amet consectetur adipisicing elit. Ipsa cum nihil dolor temporibus minima itaque esse fugiat consequatur, aut dicta nulla a, ullam aperiam aliquid quidem illum est excepturi at?</p>
+                    </div>
+                </div>
+                <div class="user-testimony">
+                    <div class="person mb-2">
+                        <h6><img src="{% static 'assets/faces/5.png' %}" alt="User 7"></h6>
+                        <div class="name">
+                            <h5>Collins Lucas</h5>
+                            <h6>Abuja City</h6>
+                        </div>
+                    </div>
+                    <div class="testimony">
+                        <p>paybills ipsum dolor sit amet consectetur adipisicing elit. Ipsa cum nihil dolor temporibus minima itaque esse fugiat consequatur, aut dicta nulla a, ullam aperiam aliquid quidem illum est excepturi at?</p>
+                    </div>
+                </div>
+                <div class="user-testimony">
+                    <div class="person mb-2">
+                        <h6><img src="{% static 'assets/faces/8.jpeg' %}" alt="User 8"></h6>
+                        <div class="name">
+                            <h5>Ethan Williams</h5>
+                            <h6>Abakaliki City</h6>
+                        </div>
+                    </div>
+                    <div class="testimony">
+                        <p>App ipsum dolor sit amet consectetur adipisicing elit. Ipsa cum nihil dolor temporibus minima itaque esse fugiat consequatur, aut dicta nulla a, ullam aperiam aliquid quidem illum est excepturi at?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="next-prev">
+                <div class="prev mb-3" onclick="showPrev()">
+                    <i class="fa fa-chevron-up" style="font-size: 0.8rem;"></i>
+                </div>
+                <div class="next" onclick="showNext()">
+                    <i class="fa fa-chevron-down" style="font-size: 0.8rem;"></i>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- ======================================= end of testimonial section ================================================= -->
+
+
+    <!-- ======================================= footer section =========================================================== -->
+    <footer class="all-footer mt-5">
+        <div class="footer-content margin">
+            <div class="footer-left">
+                <a href="{% url 'index' %}">
+                    <img width="100" class="mb-4" src="{% static 'assets/image/logo.png' %}" alt="Logo">
+                </a>
+                <p>
+                    <span>We’re always in search for talented and</span>
+                    <span>motivated people. Don’t be shy introduce</span>
+                    <span>yourself!</span>
+                </p>
+                <div class="contact-cta">
+                    <a href="{% url 'contact_us' %}">
+                        <button class="main-btn">Contact With Us <i class="fa fa-chevron-right"></i></button>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-center">
+                <h4>MyClassAI</h4>
+                <a href="{% url 'about' %}">About</a>
+                <a href="{% url 'contact_us' %}">Contact Us</a>
+                <a href="">What we Offer</a>
+                <a href="">Careers</a>
+                <a href="">Leadership</a>
+            </div>
+            <div class="footer-center">
+                <h4>Technical Skills</h4>
+                <a href="">Coding</a>
+                <a href="">Cybersecurity</a>
+                <a href="">Java Programming</a>
+                <a href="">Python</a>
+                <a href="">Web Development</a>
+                <a href="">Generative AI</a>
+            </div>
+            <div class="footer-right">
+                <h4>Get Contact</h4>
+                <p><strong>Phone:</strong> <a href="tel:+2349054324576">+2349054324576 || +2348730945237</a></p>
+                <p><strong>Email:</strong> <a href="mailto:myclassaisupport@gmail.com">myclassaisupport@gmail.com</a></p>
+                <p>
+                    <span><strong>Location:</strong> No:12 alpha-road Abuja</span>
+                    <span>Zixco street Enugu</span>
+                </p>
+                <div class="social">
+                    <a href="">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+                    <a href="">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="all-copy-right margin">
+            <div class="copy-left">
+                <p>Copyright &copy; 2025 <span>MyClassAI</span> All Right Reserved</p>
+            </div>
+            <div class="copy-right">
+                <a href="">Terms of Service</a>
+                <span>|</span>
+                <a href="">Privacy Policy</a>
+                <span>|</span>
+                <a href="{% url 'login' %}">Login & Register</a>
+            </div>
+        </div>
+    </footer>
+    <!-- ======================================= end of footer section =========================================================== -->
+
+    <script src="{% static 'assets/js/home-sidebar.js' %}"></script>
+    <script src="{% static 'assets/js/index.js' %}"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init(); // Initialize AOS
+    </script>
+</body>
+</html>

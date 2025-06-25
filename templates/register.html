@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'assets/image/favicon.png' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'assets/image/20250614_180036.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'assets/dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/icons/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/register.css' %}">
+    <title>Register</title>
+</head>
+<body>
+    <section class="all-register">
+        <div class="register-content margin">
+            <div class="register-left">
+                <div class="register-logo mb-5">
+                    <a href="{% url 'index' %}">
+                        <img width="100" src="{% static 'assets/image/logo.png' %}" alt="Logo">
+                    </a>
+                </div>
+                <div class="register-head mb-4">
+                    <h4>Create an Account</h4>
+                    <p>Join our learning community</p>
+                </div>
+                <form action="" method="POST">
+                    {% csrf_token %} {# Django's CSRF protection #}
+                    {{ form.non_field_errors }} {# Display form-wide errors #}
+
+                    <label for="{{ form.username.id_for_label }}">Username</label>
+                    <div class="register-input mb-4">
+                        {{ form.username }} {# Renders the username input field #}
+                        <i class="far fa-user"></i>
+                    </div>
+                    {{ form.username.errors }} {# Display username field-specific errors #}
+
+                    <label for="{{ form.first_name.id_for_label }}">First Name</label>
+                    <div class="register-input mb-4">
+                        {{ form.first_name }} {# Renders the first_name input field #}
+                        <i class="far fa-user"></i>
+                    </div>
+                    {{ form.first_name.errors }} {# Display first_name field-specific errors #}
+
+                    <label for="{{ form.last_name.id_for_label }}">Last Name</label>
+                    <div class="register-input mb-4">
+                        {{ form.last_name }} {# Renders the last_name input field #}
+                        <i class="far fa-user"></i>
+                    </div>
+                    {{ form.last_name.errors }} {# Display last_name field-specific errors #}
+
+                    <label for="{{ form.email.id_for_label }}">Email Address</label>
+                    <div class="register-input mb-4">
+                        {{ form.email }} {# Renders the email input field #}
+                        <i class="far fa-envelope"></i>
+                    </div>
+                    {{ form.email.errors }} {# Display email field-specific errors #}
+
+                    <label for="{{ form.password.id_for_label }}">Password</label>
+                    <div class="register-input mb-3">
+                        {{ form.password }} {# Renders the password input field #}
+                        <span class="eye-icon"><i class="far fa-eye-slash" onclick="togglePasswordVisibility()"></i></span>
+                    </div>
+                    {{ form.password.errors }} {# Display password field-specific errors #}
+
+                    <label for="{{ form.password2.id_for_label }}">Confirm Password</label> {# Label for password2 #}
+                    <div class="register-input mb-3">
+                        {{ form.password2 }} {# Renders the password2 input field #}
+                        <span class="eye-icon"><i class="far fa-eye-slash" onclick="togglePasswordVisibility()"></i></span> {# Re-using icon for consistency #}
+                    </div>
+                    {{ form.password2.errors }} {# Display password2 field-specific errors #}
+
+                    <div class="check mb-3">
+                        <input type="checkbox" id="accept_terms" name="accept_terms" required> {# Added id and name for the checkbox, marked as required #}
+                        <label for="accept_terms">Accept <span>Terms and Condition</span></label>
+                    </div>
+
+                    <div class="register-cta mb-3">
+                        <button type="submit" class="main-btn w-100 py-3">Register</button> {# Changed type to submit and removed <a> #}
+                    </div>
+                    <div class="query">
+                        <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script src="{% static 'assets/js/register.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'assets/image/favicon.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'assets/dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/icons/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/media.css' %}">
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <title>Ai powered e-learning platform - Contact Us</title>
+</head>
+<body>
+
+    <!-- =========================== sidebar section ========================== -->
+    <nav id="sidebar">
+        <div class="side-content">
+            <div class="side-logo py-2">
+                <img width="150" src="{% static 'assets/image/logo.png' %}" alt="Logo">
+            </div>
+            <div class="middle">
+                <div class="side-line"></div>
+                <div class="side-right margin">
+                    <div class="side-item mb-3">
+                        <a href="{% url 'index' %}">Home</a>
+                    </div>
+                    <div class="side-item mb-3">
+                        <a href="{% url 'about' %}">About</a>
+                    </div>
+                    <!-- <div class="side-item mb-3">
+                        <a href="{% url 'courses' %}">Courses</a>
+                    </div> -->
+                    <div class="side-item mb-3">
+                        <a href="{% url 'contact_us' %}">Contact Us</a>
+                    </div>
+
+                    <div class="nav-cta">
+                        <a href="{% url 'login' %}">
+                            <button class="main-btn w-100">Sign In</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- =========================== end of sidebar section ========================== -->
+
+    <!-- ================================== navbar section ================================ -->
+    <section class="all-navbar">
+        <div class="navbar-content margin">
+            <div class="nav-left">
+                <img width="50" src="{% static 'assets/image/logo.png' %}" alt="Logo">
+            </div>
+            <div class="nav-right">
+                <a href="{% url 'index' %}">Home</a>
+                <a href="{% url 'about' %}">About</a>
+                <!-- <a href="{% url 'courses' %}">Courses</a> -->
+                <a href="{% url 'contact_us' %}">Contact Us</a>
+                <div class="nav-cta">
+                    <a href="{% url 'login' %}">
+                        <button class="main-btn">Sign In</button>
+                    </a>
+                </div>
+            </div>
+            <div id="bars">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </section>
+    <!-- ================================== end of navbar section ================================ -->
+
+    <!-- ========================================= hero section ================================ -->
+    <section class="all-hero">
+        <div class="about-header">
+            <h1>Contact Us</h1>
+        </div>
+    </section>
+    <!-- ========================================= end of hero section ================================ -->
+
+    <!-- ===================================================== contact section =============================================== -->
+    <section class="all-contact">
+        <div class="contact-content">
+            <h1>We’re Here to Help You</h1>
+            <p>We always want to hear from you! Let us know how we can help you and we'll do our very best.</p>
+        </div>
+        <form action="" method="POST"> {# Added method="POST" and action="" for Django form handling #}
+            {% csrf_token %} {# Add this for Django's Cross-Site Request Forgery protection #}
+            <div class="contact-form">
+                <input type="text" name="name" placeholder="Fullname">
+                <input type="email" name="email" placeholder="Email address">
+            </div>
+            <div class="text-area mb-4">
+                <textarea name="message" id="" placeholder="Tell us a few words"></textarea> {# Added name="message" #}
+            </div>
+            <div class="contact-cta mb-5">
+                <button type="submit" class="main-btn w-100 py-3">Send your Message</button> {# Changed type to submit #}
+            </div>
+        </form>
+        <div class="contact-map">
+           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.3785273360572!2d8.081960074044792!3d6.345002125213839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x105b5fd6cf030811%3A0x402b14742e117cb!2sNEPA%20junction!5e0!3m2!1sen!2sng!4v1750630161794!5m2!1sen!2sng" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <!-- ===================================================== end of contact section =============================================== -->
+
+
+    <!-- ======================================= footer section =========================================================== -->
+    <footer class="all-footer mt-5">
+        <div class="footer-content margin">
+            <div class="footer-left">
+                <a href="{% url 'index' %}">
+                    <img width="100" class="mb-4" src="{% static 'assets/image/logo.png' %}" alt="Logo">
+                </a>
+                <p>
+                    <span>We’re always in search for talented and</span>
+                    <span>motivated people. Don’t be shy introduce</span>
+                    <span>yourself!</span>
+                </p>
+                <div class="contact-cta">
+                    <a href="{% url 'contact_us' %}">
+                        <button class="main-btn">Contact With Us <i class="fa fa-chevron-right"></i></button>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-center">
+                <h4>MyClassAI</h4>
+                <a href="{% url 'about' %}">About</a>
+                <a href="{% url 'contact_us' %}">Contact Us</a>
+                <a href="">What we Offer</a>
+                <a href="">Careers</a>
+                <a href="">Leadership</a>
+            </div>
+            <div class="footer-center">
+                <h4>Technical Skills</h4>
+                <a href="">Coding</a>
+                <a href="">Cybersecurity</a>
+                <a href="">Java Programming</a>
+                <a href="">Python</a>
+                <a href="">Web Development</a>
+                <a href="">Generative AI</a>
+            </div>
+            <div class="footer-right">
+                <h4>Get Contact</h4>
+                <p><strong>Phone:</strong> <a href="tel:+2349054324576">+2349054324576 || +2348730945237</a></p>
+                <p><strong>Email:</strong> <a href="mailto:myclassaisupport@gmail.com">myclassaisupport@gmail.com</a></p>
+                <p>
+                    <span><strong>Location:</strong> No:12 alpha-road Abuja</span>
+                    <span>Zixco street Enugu</span>
+                </p>
+                <div class="social">
+                    <a href="">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+                    <a href="">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="all-copy-right margin">
+            <div class="copy-left">
+                <p>Copyright &copy; 2025 <span>MyClassAI</span> All Right Reserved</p>
+            </div>
+            <div class="copy-right">
+                <a href="">Terms of Service</a>
+                <span>|</span>
+                <a href="">Privacy Policy</a>
+                <span>|</span>
+                <a href="{% url 'login' %}">Login & Register</a>
+            </div>
+        </div>
+    </footer>
+    <!-- ======================================= end of footer section =========================================================== -->
+
+    <script src="{% static 'assets/js/home-sidebar.js' %}"></script>
+    <script src="{% static 'assets/js/index.js' %}"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init(); // Initialize AOS
+    </script>
+</body>
+</html>

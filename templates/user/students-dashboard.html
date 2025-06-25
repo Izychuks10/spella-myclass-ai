@@ -1,0 +1,775 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'assets/image/favicon.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'assets/dist/css/bootstrap.min.css' %}">
+    <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+    <link rel="stylesheet" href="{% static 'assets/icons/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/media.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+           <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <title>Student Dashboard</title>
+
+</head>
+<body>
+
+    <!-- =========================================== mobile sidebar ===================================================-->
+  <nav id="sidebars">
+        <div class="side-nav">
+                <div class="side-logo">
+                    <img width="80" src="{% static 'assets//image/logo.png' %}" alt="">
+                    <img class="wrap-image" width="30" src="{% static 'assets/image/favicon-2.png' %}" alt="">
+                </div>
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path d="M22 7H2"/><path d="M19 12H5" opacity="0.5"/><path d="M16 17H8"/></g></svg> -->
+        </div>
+        <div class="dash-sidebar-content">
+                <span class="intro">
+                    <label>GENERAL</label>
+                </span>
+
+                <a href="{% url 'students_dashboard' %}"><div class="sidebar-items" onclick="toggleMenu('dashboard', event)">
+                    <div class="sidebar-item-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M14.5 6.5h3m0 0h3m-3 0v3m0-3v-3"/><path d="M2.5 6.5c0-1.886 0-2.828.586-3.414S4.614 2.5 6.5 2.5s2.828 0 3.414.586s.586 1.528.586 3.414s0 2.828-.586 3.414s-1.528.586-3.414.586s-2.828 0-3.414-.586S2.5 8.386 2.5 6.5Zm11 11c0-1.886 0-2.828.586-3.414s1.528-.586 3.414-.586s2.828 0 3.414.586s.586 1.528.586 3.414s0 2.828-.586 3.414s-1.528.586-3.414.586s-2.828 0-3.414-.586s-.586-1.528-.586-3.414Z"/><path d="M2.5 17.5c0-1.886 0-2.828.586-3.414S4.614 13.5 6.5 13.5s2.828 0 3.414.586s.586 1.528.586 3.414s0 2.828-.586 3.414s-1.528.586-3.414.586s-2.828 0-3.414-.586S2.5 19.386 2.5 17.5Z" opacity="0.5"/></g></svg>
+                    <label>Dashboard-1</label>
+                    </div>
+                     <!-- <div class="submenu" id="dashboard">
+                        <a href="./student-dashboard.html"><p class="side-drop"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none"><path fill="currentColor" d="M4 11.25a.75.75 0 0 0 0 1.5zm0 1.5h16v-1.5H4z" opacity="0.5"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m14 6l6 6l-6 6"/></g></svg> Student Dashborad</p></a>
+                        <a href=""><p class="side-drop"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none"><path fill="currentColor" d="M4 11.25a.75.75 0 0 0 0 1.5zm0 1.5h16v-1.5H4z" opacity="0.5"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m14 6l6 6l-6 6"/></g></svg> Parent Dashboard</p></a>
+                    </div> -->
+                </div></a>
+
+                <a href="{% url 'parents_dashboard' %}"><div class="sidebar-items" onclick="toggleMenu('dashboard-2', event)">
+                    <div class="sidebar-item-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M14.5 6.5h3m0 0h3m-3 0v3m0-3v-3"/><path d="M2.5 6.5c0-1.886 0-2.828.586-3.414S4.614 2.5 6.5 2.5s2.828 0 3.414.586s.586 1.528.586 3.414s0 2.828-.586 3.414s-1.528.586-3.414.586s-2.828 0-3.414-.586S2.5 8.386 2.5 6.5Zm11 11c0-1.886 0-2.828.586-3.414s1.528-.586 3.414-.586s2.828 0 3.414.586s.586 1.528.586 3.414s0 2.828-.586 3.414s-1.528.586-3.414.586s-2.828 0-3.414-.586s-.586-1.528-.586-3.414Z"/><path d="M2.5 17.5c0-1.886 0-2.828.586-3.414S4.614 13.5 6.5 13.5s2.828 0 3.414.586s.586 1.528.586 3.414s0 2.828-.586 3.414s-1.528.586-3.414.586s-2.828 0-3.414-.586S2.5 19.386 2.5 17.5Z" opacity="0.5"/></g></svg>
+                    <label>Dashboard-2</label>
+                    </div>
+                </div></a>
+
+
+                <a href="{% url 'library' %}"><div class="sidebar-items" onclick="toggleMenu('Library', event)">
+                    <div class="sidebar-item-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M2 21h20" opacity="0.5"/><path d="M7.5 17c-.935 0-1.402 0-1.75-.201a1.5 1.5 0 0 1-.549-.549C5 15.902 5 15.435 5 14.5v-9c0-.935 0-1.402.201-1.75a1.5 1.5 0 0 1 .549-.549C6.098 3 6.565 3 7.5 3s1.402 0 1.75.201a1.5 1.5 0 0 1 .549.549C10 4.098 10 4.565 10 5.5v9c0 .935 0 1.402-.201 1.75a1.5 1.5 0 0 1-.549.549C8.902 17 8.435 17 7.5 17Zm9 0c-.935 0-1.402 0-1.75-.201a1.5 1.5 0 0 1-.549-.549C14 15.902 14 15.435 14 14.5v-6c0-.935 0-1.402.201-1.75a1.5 1.5 0 0 1 .549-.549C15.098 6 15.565 6 16.5 6s1.402 0 1.75.201a1.5 1.5 0 0 1 .549.549C19 7.098 19 7.565 19 8.5v6c0 .935 0 1.402-.201 1.75a1.5 1.5 0 0 1-.549.549c-.348.201-.815.201-1.75.201Z"/></g></svg>
+                    <label>Library</label>
+                    </div>
+                </div></a>
+
+                <a href="{% url 'courses' %}"><div class="sidebar-items" onclick="toggleMenu('courses', event)">
+                    <div class="sidebar-item-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path d="M3.092 6.637L9.782 3.5a5.17 5.17 0 0 1 4.435 0l6.691 3.137c1.456.682 1.456 3.044 0 3.726l-6.69 3.137a5.17 5.17 0 0 1-4.435 0L5 11.258"/><path stroke-linejoin="round" d="M2.5 15v-2.862c0-1.28 0-1.92.33-2.42c.33-.501.919-.753 2.094-1.257L6 8" opacity="0.5"/><path d="M19 11.5v5.125c0 1.008-.503 1.952-1.385 2.44C16.146 19.88 13.796 21 12 21s-4.146-1.121-5.615-1.934C5.504 18.577 5 17.633 5 16.626V11.5" opacity="0.5"/></g></svg>
+                    <label>Courses</label>
+                    </div>
+                    <!-- <div class="submenu" id="courses">
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none"><path fill="currentColor" d="M4 11.25a.75.75 0 0 0 0 1.5zm0 1.5h16v-1.5H4z" opacity="0.5"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m14 6l6 6l-6 6"/></g></svg> Student Courses</p>
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none"><path fill="currentColor" d="M4 11.25a.75.75 0 0 0 0 1.5zm0 1.5h16v-1.5H4z" opacity="0.5"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m14 6l6 6l-6 6"/></g></svg> Create Course</p>
+                    </div> -->
+                </div></a>
+                <a href="{% url 'students' %}"><div class="sidebar-items" onclick="toggleMenu('students', event)">
+                    <div class="sidebar-item-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="6" r="4"/><path stroke-linecap="round" d="M18 9c1.657 0 3-1.12 3-2.5S19.657 4 18 4M6 9C4.343 9 3 7.88 3 6.5S4.343 4 6 4" opacity="0.5"/><ellipse cx="12" cy="17" rx="6" ry="4"/><path stroke-linecap="round" d="M20 19c1.754-.385 3-1.359 3-2.5s-1.246-2.115-3-2.5M4 19c-1.754-.385-3-1.359-3-2.5s1.246-2.115 3-2.5" opacity="0.5"/></g></svg>
+                    <label>Students</label>
+                    </div>
+                </div></a>
+                 <a href="{% url 'teachers' %}"><div class="sidebar-items" onclick="toggleMenu('teachers', event)">
+                    <div class="sidebar-item-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="6" r="4"/><path d="M12.5 4.341a3 3 0 1 1 0 3.318" opacity="0.5"/><ellipse cx="9" cy="17" rx="7" ry="4"/><path stroke-linecap="round" d="M18 14c1.754.385 3 1.359 3 2.5c0 1.03-1.014 1.923-2.5 2.37" opacity="0.5"/></g></svg>
+                    <label>Teachers</label>
+                    </div>
+                </div></a>
+
+                  <a href="{% url 'pricing' %}"><div class="sidebar-items" onclick="toggleMenu('pricing', event)">
+                    <div class="sidebar-item-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4.728 16.137c-1.545-1.546-2.318-2.318-2.605-3.321c-.288-1.003-.042-2.068.45-4.197l.283-1.228c.413-1.792.62-2.688 1.233-3.302s1.51-.82 3.302-1.233l1.228-.284c2.13-.491 3.194-.737 4.197-.45c1.003.288 1.775 1.061 3.32 2.606l1.83 1.83C20.657 9.248 22 10.592 22 12.262c0 1.671-1.344 3.015-4.033 5.704c-2.69 2.69-4.034 4.034-5.705 4.034c-1.67 0-3.015-1.344-5.704-4.033z" opacity="0.5"/><path stroke-linecap="round" d="M15.39 15.39c.585-.587.664-1.457.176-1.946s-1.359-.409-1.945.177c-.585.586-1.456.665-1.944.177s-.409-1.359.177-1.944m3.535 3.535l.354.354m-.354-.354c-.4.401-.935.565-1.389.471m-2.5-4.36l.354.354m0 0c.331-.332.753-.5 1.146-.497"/><circle cx="8.607" cy="8.879" r="2" transform="rotate(-45 8.607 8.879)"/></g></svg>
+                    <label>Pricing</label>
+                    </div>
+                </div></a>
+
+                <span class="intro">
+                    <label>OTHER PAGES</label>
+                </span>
+
+                <a href="{% url 'settings' %}"><div class="sidebar-items" onclick="toggleMenu('settings', event)">
+                        <div class="sidebar-item-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M13.765 2.152C13.398 2 12.932 2 12 2s-1.398 0-1.765.152a2 2 0 0 0-1.083 1.083c-.092.223-.129.484-.143.863a1.62 1.62 0 0 1-.79 1.353a1.62 1.62 0 0 1-1.567.008c-.336-.178-.579-.276-.82-.308a2 2 0 0 0-1.478.396C4.04 5.79 3.806 6.193 3.34 7s-.7 1.21-.751 1.605a2 2 0 0 0 .396 1.479c.148.192.355.353.676.555c.473.297.777.803.777 1.361s-.304 1.064-.777 1.36c-.321.203-.529.364-.676.556a2 2 0 0 0-.396 1.479c.052.394.285.798.75 1.605c.467.807.7 1.21 1.015 1.453a2 2 0 0 0 1.479.396c.24-.032.483-.13.819-.308a1.62 1.62 0 0 1 1.567.008c.483.28.77.795.79 1.353c.014.38.05.64.143.863a2 2 0 0 0 1.083 1.083C10.602 22 11.068 22 12 22s1.398 0 1.765-.152a2 2 0 0 0 1.083-1.083c.092-.223.129-.483.143-.863c.02-.558.307-1.074.79-1.353a1.62 1.62 0 0 1 1.567-.008c.336.178.579.276.819.308a2 2 0 0 0 1.479-.396c.315-.242.548-.646 1.014-1.453s.7-1.21.751-1.605a2 2 0 0 0-.396-1.479c-.148-.192-.355-.353-.676-.555A1.62 1.62 0 0 1 19.562 12c0-.558.304-1.064.777-1.36c.321-.203.529-.364.676-.556a2 2 0 0 0 .396-1.479c-.052-.394-.285-.798-.75-1.605c-.467-.807-.7-1.21-1.015-1.453a2 2 0 0 0-1.479-.396c-.24.032-.483.13-.82.308a1.62 1.62 0 0 1-1.566-.008a1.62 1.62 0 0 1-.79-1.353c-.014-.38-.05-.64-.143-.863a2 2 0 0 0-1.083-1.083Z" opacity="0.5"/></g></svg>
+                        <label>Settings</label>
+                        </div>
+                </div></a>
+
+                <a href="{% url 'support' %}"><div class="sidebar-items" onclick="toggleMenu('support', event)">
+                    <div class="sidebar-item-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" opacity="0.5"/><path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M10.125 8.875a1.875 1.875 0 1 1 2.828 1.615c-.475.281-.953.708-.953 1.26V13"/><circle cx="12" cy="16" r="1" fill="currentColor"/></g></svg>
+                    <label>Support</label>
+                    </div>
+                </div></a>
+                <div class="sidebar-items" onclick="toggleMenu('authentications', event)">
+                    <div class="sidebar-item-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none"><path stroke="currentColor" stroke-width="1.5" d="M2 16c0-2.828 0-4.243.879-5.121C3.757 10 5.172 10 8 10h8c2.828 0 4.243 0 5.121.879C22 11.757 22 13.172 22 16s0 4.243-.879 5.121C20.243 22 18.828 22 16 22H8c-2.828 0-4.243 0-5.121-.879C2 20.243 2 18.828 2 16Z"/><path fill="currentColor" d="M9 16a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0" opacity="0.5"/><path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M6 10V8a6 6 0 0 1 11.811-1.5" opacity="0.5"/></g></svg>
+                    <label>Authentication</label>
+                    </div>
+                     <div class="submenu" id="authentications">
+                        <p><a href="{% url 'login' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none"><path fill="currentColor" d="M4 11.25a.75.75 0 0 0 0 1.5zm0 1.5h16v-1.5H4z" opacity="0.5"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m14 6l6 6l-6 6"/></g></svg> Sign In</a></p>
+                        <p><a href="{% url 'register' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none"><path fill="currentColor" d="M4 11.25a.75.75 0 0 0 0 1.5zm0 1.5h16v-1.5H4z" opacity="0.5"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m14 6l6 6l-6 6"/></g></svg> Sign Up</a></p>
+                        <p><a href="{% url 'forgot_password' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none"><path fill="currentColor" d="M4 11.25a.75.75 0 0 0 0 1.5zm0 1.5h16v-1.5H4z" opacity="0.5"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m14 6l6 6l-6 6"/></g></svg> Forgot Password</a></p>
+                        <p><a href="{% url 'reset_password' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none"><path fill="currentColor" d="M4 11.25a.75.75 0 0 0 0 1.5zm0 1.5h16v-1.5H4z" opacity="0.5"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m14 6l6 6l-6 6"/></g></svg> Reset Password</a></p>
+                        <p><a href="{% url 'verify_email' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none"><path fill="currentColor" d="M4 11.25a.75.75 0 0 0 0 1.5zm0 1.5h16v-1.5H4z" opacity="0.5"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m14 6l6 6l-6 6"/></g></svg> Verify Email</a></p>
+                    </div>
+                </div>
+        </div>
+  </nav> 
+    <!-- =========================================== end of mobile sidebar ===================================================-->
+
+    <section class="all-dashboard">
+        <div class="dashboard-content">
+            
+            <!-- ================================== sidebar section ========================================== -->
+        <div class="dash-sidebar">
+            <div class="side-nav">
+                <div class="side-logo">
+                    <img width="80" src="{% static 'assets//image/logo.png '%}" alt="">
+                    <img class="wrap-image" width="30" src="{% static 'assets/image/favicon-2.png' %}" alt="">
+                </div>
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path d="M22 7H2"/><path d="M19 12H5" opacity="0.5"/><path d="M16 17H8"/></g></svg> -->
+            </div>
+
+            <div class="dash-sidebar-content">
+                <span class="intro">
+                    <label>GENERAL</label>
+                </span>
+
+                <a href="{% url 'students_dashboard' %}"><div class="sidebar-items" onclick="toggleMenu('dashboard', event)">
+                    <div class="sidebar-item-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M14.5 6.5h3m0 0h3m-3 0v3m0-3v-3"/><path d="M2.5 6.5c0-1.886 0-2.828.586-3.414S4.614 2.5 6.5 2.5s2.828 0 3.414.586s.586 1.528.586 3.414s0 2.828-.586 3.414s-1.528.586-3.414.586s-2.828 0-3.414-.586S2.5 8.386 2.5 6.5Zm11 11c0-1.886 0-2.828.586-3.414s1.528-.586 3.414-.586s2.828 0 3.414.586s.586 1.528.586 3.414s0 2.828-.586 3.414s-1.528.586-3.414.586s-2.828 0-3.414-.586s-.586-1.528-.586-3.414Z"/><path d="M2.5 17.5c0-1.886 0-2.828.586-3.414S4.614 13.5 6.5 13.5s2.828 0 3.414.586s.586 1.528.586 3.414s0 2.828-.586 3.414s-1.528.586-3.414.586s-2.828 0-3.414-.586S2.5 19.386 2.5 17.5Z" opacity="0.5"/></g></svg>
+                    <label>Dashboard-1</label>
+                    </div>
+                     <!-- <div class="submenu" id="dashboard">
+                        <a href="./student-dashboard.html"><p class="side-drop"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none"><path fill="currentColor" d="M4 11.25a.75.75 0 0 0 0 1.5zm0 1.5h16v-1.5H4z" opacity="0.5"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m14 6l6 6l-6 6"/></g></svg> Student Dashborad</p></a>
+                        <a href=""><p class="side-drop"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none"><path fill="currentColor" d="M4 11.25a.75.75 0 0 0 0 1.5zm0 1.5h16v-1.5H4z" opacity="0.5"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m14 6l6 6l-6 6"/></g></svg> Parent Dashboard</p></a>
+                    </div> -->
+                </div></a>
+
+                <a href="{% url 'parents_dashboard' %}"><div class="sidebar-items" onclick="toggleMenu('dashboard-2', event)">
+                    <div class="sidebar-item-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M14.5 6.5h3m0 0h3m-3 0v3m0-3v-3"/><path d="M2.5 6.5c0-1.886 0-2.828.586-3.414S4.614 2.5 6.5 2.5s2.828 0 3.414.586s.586 1.528.586 3.414s0 2.828-.586 3.414s-1.528.586-3.414.586s-2.828 0-3.414-.586S2.5 8.386 2.5 6.5Zm11 11c0-1.886 0-2.828.586-3.414s1.528-.586 3.414-.586s2.828 0 3.414.586s.586 1.528.586 3.414s0 2.828-.586 3.414s-1.528.586-3.414.586s-2.828 0-3.414-.586s-.586-1.528-.586-3.414Z"/><path d="M2.5 17.5c0-1.886 0-2.828.586-3.414S4.614 13.5 6.5 13.5s2.828 0 3.414.586s.586 1.528.586 3.414s0 2.828-.586 3.414s-1.528.586-3.414.586s-2.828 0-3.414-.586S2.5 19.386 2.5 17.5Z" opacity="0.5"/></g></svg>
+                    <label>Dashboard-2</label>
+                    </div>
+                </div></a>
+
+
+                <a href="{% url 'library' %}"><div class="sidebar-items" onclick="toggleMenu('Library', event)">
+                    <div class="sidebar-item-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M2 21h20" opacity="0.5"/><path d="M7.5 17c-.935 0-1.402 0-1.75-.201a1.5 1.5 0 0 1-.549-.549C5 15.902 5 15.435 5 14.5v-9c0-.935 0-1.402.201-1.75a1.5 1.5 0 0 1 .549-.549C6.098 3 6.565 3 7.5 3s1.402 0 1.75.201a1.5 1.5 0 0 1 .549.549C10 4.098 10 4.565 10 5.5v9c0 .935 0 1.402-.201 1.75a1.5 1.5 0 0 1-.549.549C8.902 17 8.435 17 7.5 17Zm9 0c-.935 0-1.402 0-1.75-.201a1.5 1.5 0 0 1-.549-.549C14 15.902 14 15.435 14 14.5v-6c0-.935 0-1.402.201-1.75a1.5 1.5 0 0 1 .549-.549C15.098 6 15.565 6 16.5 6s1.402 0 1.75.201a1.5 1.5 0 0 1 .549.549C19 7.098 19 7.565 19 8.5v6c0 .935 0 1.402-.201 1.75a1.5 1.5 0 0 1-.549.549c-.348.201-.815.201-1.75.201Z"/></g></svg>
+                    <label>Library</label>
+                    </div>
+                </div></a>
+
+                <a href="{% url 'courses' %}"><div class="sidebar-items" onclick="toggleMenu('courses', event)">
+                    <div class="sidebar-item-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path d="M3.092 6.637L9.782 3.5a5.17 5.17 0 0 1 4.435 0l6.691 3.137c1.456.682 1.456 3.044 0 3.726l-6.69 3.137a5.17 5.17 0 0 1-4.435 0L5 11.258"/><path stroke-linejoin="round" d="M2.5 15v-2.862c0-1.28 0-1.92.33-2.42c.33-.501.919-.753 2.094-1.257L6 8" opacity="0.5"/><path d="M19 11.5v5.125c0 1.008-.503 1.952-1.385 2.44C16.146 19.88 13.796 21 12 21s-4.146-1.121-5.615-1.934C5.504 18.577 5 17.633 5 16.626V11.5" opacity="0.5"/></g></svg>
+                    <label>Courses</label>
+                    </div>
+                    <!-- <div class="submenu" id="courses">
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none"><path fill="currentColor" d="M4 11.25a.75.75 0 0 0 0 1.5zm0 1.5h16v-1.5H4z" opacity="0.5"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m14 6l6 6l-6 6"/></g></svg> Student Courses</p>
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none"><path fill="currentColor" d="M4 11.25a.75.75 0 0 0 0 1.5zm0 1.5h16v-1.5H4z" opacity="0.5"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m14 6l6 6l-6 6"/></g></svg> Create Course</p>
+                    </div> -->
+                </div></a>
+                <a href="{% url 'students' %}"><div class="sidebar-items" onclick="toggleMenu('students', event)">
+                    <div class="sidebar-item-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="6" r="4"/><path stroke-linecap="round" d="M18 9c1.657 0 3-1.12 3-2.5S19.657 4 18 4M6 9C4.343 9 3 7.88 3 6.5S4.343 4 6 4" opacity="0.5"/><ellipse cx="12" cy="17" rx="6" ry="4"/><path stroke-linecap="round" d="M20 19c1.754-.385 3-1.359 3-2.5s-1.246-2.115-3-2.5M4 19c-1.754-.385-3-1.359-3-2.5s1.246-2.115 3-2.5" opacity="0.5"/></g></svg>
+                    <label>Students</label>
+                    </div>
+                </div></a>
+                 <a href="{% url 'teachers' %}"><div class="sidebar-items" onclick="toggleMenu('teachers', event)">
+                    <div class="sidebar-item-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="6" r="4"/><path d="M12.5 4.341a3 3 0 1 1 0 3.318" opacity="0.5"/><ellipse cx="9" cy="17" rx="7" ry="4"/><path stroke-linecap="round" d="M18 14c1.754.385 3 1.359 3 2.5c0 1.03-1.014 1.923-2.5 2.37" opacity="0.5"/></g></svg>
+                    <label>Teachers</label>
+                    </div>
+                </div></a>
+
+                  <a href="{% url 'pricing' %}"><div class="sidebar-items" onclick="toggleMenu('pricing', event)">
+                    <div class="sidebar-item-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4.728 16.137c-1.545-1.546-2.318-2.318-2.605-3.321c-.288-1.003-.042-2.068.45-4.197l.283-1.228c.413-1.792.62-2.688 1.233-3.302s1.51-.82 3.302-1.233l1.228-.284c2.13-.491 3.194-.737 4.197-.45c1.003.288 1.775 1.061 3.32 2.606l1.83 1.83C20.657 9.248 22 10.592 22 12.262c0 1.671-1.344 3.015-4.033 5.704c-2.69 2.69-4.034 4.034-5.705 4.034c-1.67 0-3.015-1.344-5.704-4.033z" opacity="0.5"/><path stroke-linecap="round" d="M15.39 15.39c.585-.587.664-1.457.176-1.946s-1.359-.409-1.945.177c-.585.586-1.456.665-1.944.177s-.409-1.359.177-1.944m3.535 3.535l.354.354m-.354-.354c-.4.401-.935.565-1.389.471m-2.5-4.36l.354.354m0 0c.331-.332.753-.5 1.146-.497"/><circle cx="8.607" cy="8.879" r="2" transform="rotate(-45 8.607 8.879)"/></g></svg>
+                    <label>Pricing</label>
+                    </div>
+                </div></a>
+
+                <span class="intro">
+                    <label>OTHER PAGES</label>
+                </span>
+
+                <a href="{% url 'settings' %}"><div class="sidebar-items" onclick="toggleMenu('settings', event)">
+                        <div class="sidebar-item-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M13.765 2.152C13.398 2 12.932 2 12 2s-1.398 0-1.765.152a2 2 0 0 0-1.083 1.083c-.092.223-.129.484-.143.863a1.62 1.62 0 0 1-.79 1.353a1.62 1.62 0 0 1-1.567.008c-.336-.178-.579-.276-.82-.308a2 2 0 0 0-1.478.396C4.04 5.79 3.806 6.193 3.34 7s-.7 1.21-.751 1.605a2 2 0 0 0 .396 1.479c.148.192.355.353.676.555c.473.297.777.803.777 1.361s-.304 1.064-.777 1.36c-.321.203-.529.364-.676.556a2 2 0 0 0-.396 1.479c.052.394.285.798.75 1.605c.467.807.7 1.21 1.015 1.453a2 2 0 0 0 1.479.396c.24-.032.483-.13.819-.308a1.62 1.62 0 0 1 1.567.008c.483.28.77.795.79 1.353c.014.38.05.64.143.863a2 2 0 0 0 1.083 1.083C10.602 22 11.068 22 12 22s1.398 0 1.765-.152a2 2 0 0 0 1.083-1.083c.092-.223.129-.483.143-.863c.02-.558.307-1.074.79-1.353a1.62 1.62 0 0 1 1.567-.008c.336.178.579.276.819.308a2 2 0 0 0 1.479-.396c.315-.242.548-.646 1.014-1.453s.7-1.21.751-1.605a2 2 0 0 0-.396-1.479c-.148-.192-.355-.353-.676-.555A1.62 1.62 0 0 1 19.562 12c0-.558.304-1.064.777-1.36c.321-.203.529-.364.676-.556a2 2 0 0 0 .396-1.479c-.052-.394-.285-.798-.75-1.605c-.467-.807-.7-1.21-1.015-1.453a2 2 0 0 0-1.479-.396c-.24.032-.483.13-.82.308a1.62 1.62 0 0 1-1.566-.008a1.62 1.62 0 0 1-.79-1.353c-.014-.38-.05-.64-.143-.863a2 2 0 0 0-1.083-1.083Z" opacity="0.5"/></g></svg>
+                        <label>Settings</label>
+                        </div>
+                </div></a>
+
+                <a href="{% url 'support' %}"><div class="sidebar-items" onclick="toggleMenu('support', event)">
+                    <div class="sidebar-item-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" opacity="0.5"/><path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M10.125 8.875a1.875 1.875 0 1 1 2.828 1.615c-.475.281-.953.708-.953 1.26V13"/><circle cx="12" cy="16" r="1" fill="currentColor"/></g></svg>
+                    <label>Support</label>
+                    </div>
+                </div></a>
+                <div class="sidebar-items" onclick="toggleMenu('authentication', event)">
+                    <div class="sidebar-item-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none"><path stroke="currentColor" stroke-width="1.5" d="M2 16c0-2.828 0-4.243.879-5.121C3.757 10 5.172 10 8 10h8c2.828 0 4.243 0 5.121.879C22 11.757 22 13.172 22 16s0 4.243-.879 5.121C20.243 22 18.828 22 16 22H8c-2.828 0-4.243 0-5.121-.879C2 20.243 2 18.828 2 16Z"/><path fill="currentColor" d="M9 16a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0" opacity="0.5"/><path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M6 10V8a6 6 0 0 1 11.811-1.5" opacity="0.5"/></g></svg>
+                    <label>Authentication</label>
+                    </div>
+                     <div class="submenu" id="authentication">
+                        <p><a href="{% url 'login' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none"><path fill="currentColor" d="M4 11.25a.75.75 0 0 0 0 1.5zm0 1.5h16v-1.5H4z" opacity="0.5"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m14 6l6 6l-6 6"/></g></svg> Sign In</a></p>
+                        <p><a href="{% url 'register' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none"><path fill="currentColor" d="M4 11.25a.75.75 0 0 0 0 1.5zm0 1.5h16v-1.5H4z" opacity="0.5"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m14 6l6 6l-6 6"/></g></svg> Sign Up</a></p>
+                        <p><a href="{% url 'forgot_password' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none"><path fill="currentColor" d="M4 11.25a.75.75 0 0 0 0 1.5zm0 1.5h16v-1.5H4z" opacity="0.5"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m14 6l6 6l-6 6"/></g></svg> Forgot Password</a></p>
+                        <p><a href="{% url 'reset_password' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none"><path fill="currentColor" d="M4 11.25a.75.75 0 0 0 0 1.5zm0 1.5h16v-1.5H4z" opacity="0.5"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m14 6l6 6l-6 6"/></g></svg> Reset Password</a></p>
+                        <p><a href="{% url 'verify_email' %}"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none"><path fill="currentColor" d="M4 11.25a.75.75 0 0 0 0 1.5zm0 1.5h16v-1.5H4z" opacity="0.5"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m14 6l6 6l-6 6"/></g></svg> Verify Email</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ================================== end of sidebar section ========================================== -->
+            
+        <!-- ================================== dash body section ================================ -->
+            <div class="dash-body">
+                <div class="side-nav-1">
+                    <div id="bars">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path d="M22 7H2"/><path d="M19 12H5" opacity="0.5"/><path d="M16 17H8"/></g></svg>
+                    </div>
+                    <div class="search">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><defs><mask id="solarMinimalisticMagniferLineDuotone0"><g fill="none" stroke-width="1.5"><circle cx="11.5" cy="11.5" r="9.5" stroke="#808080"/><path stroke="#fff" stroke-linecap="round" d="m20 20l2 2"/></g></mask></defs><path fill="currentColor" d="M0 0h24v24H0z" mask="url(#solarMinimalisticMagniferLineDuotone0)"/></svg>
+                        <input type="search" placeholder="Search.....">
+                    </div>
+                    <div class="side-nav-1-content">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18.75 9.71v-.705C18.75 5.136 15.726 2 12 2S5.25 5.136 5.25 9.005v.705a4.4 4.4 0 0 1-.692 2.375L3.45 13.81c-1.011 1.575-.239 3.716 1.52 4.214a25.8 25.8 0 0 0 14.06 0c1.759-.498 2.531-2.639 1.52-4.213l-1.108-1.725a4.4 4.4 0 0 1-.693-2.375Z"/><path stroke-linecap="round" d="M7.5 19c.655 1.748 2.422 3 4.5 3s3.845-1.252 4.5-3M12 6v4" opacity="0.5"/></g></svg>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M2 12h20m-6 0c0 1.313-.104 2.614-.305 3.827c-.2 1.213-.495 2.315-.867 3.244c-.371.929-.812 1.665-1.297 2.168c-.486.502-1.006.761-1.531.761s-1.045-.259-1.53-.761c-.486-.503-.927-1.24-1.298-2.168c-.372-.929-.667-2.03-.868-3.244A23.6 23.6 0 0 1 8 12c0-1.313.103-2.614.304-3.827s.496-2.315.868-3.244c.371-.929.812-1.665 1.297-2.168C10.955 2.26 11.475 2 12 2s1.045.259 1.53.761c.486.503.927 1.24 1.298 2.168c.372.929.667 2.03.867 3.244C15.897 9.386 16 10.687 16 12Z" opacity="0.5"/><path d="M22 12a10 10 0 1 1-20.001 0A10 10 0 0 1 22 12Z"/></g></svg>
+                       
+                        <div class="profile-nav">
+                            <div id="profile-pic" class="profile-pic">
+                                <img src="{% static 'assets/image/20250311_152604.jpg' %}" alt="">
+                            </div>
+                            <div id="profile-item" class="profile-nav-items">
+                                <div class="first-item p-3">
+                                    <h6>Welcome,
+                <span class="username">
+                    {% if user.username %}
+                        {{ user.username }}
+                    {% else %}
+                        User
+                    {% endif %}
+                </span></h6>
+                                    <a href="{% url 'settings' %}"><div class="profile-item pb-2 mb-1">
+                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M13.765 2.152C13.398 2 12.932 2 12 2s-1.398 0-1.765.152a2 2 0 0 0-1.083 1.083c-.092.223-.129.484-.143.863a1.62 1.62 0 0 1-.79 1.353a1.62 1.62 0 0 1-1.567.008c-.336-.178-.579-.276-.82-.308a2 2 0 0 0-1.478.396C4.04 5.79 3.806 6.193 3.34 7s-.7 1.21-.751 1.605a2 2 0 0 0 .396 1.479c.148.192.355.353.676.555c.473.297.777.803.777 1.361s-.304 1.064-.777 1.36c-.321.203-.529.364-.676.556a2 2 0 0 0-.396 1.479c.052.394.285.798.75 1.605c.467.807.7 1.21 1.015 1.453a2 2 0 0 0 1.479.396c.24-.032.483-.13.819-.308a1.62 1.62 0 0 1 1.567.008c.483.28.77.795.79 1.353c.014.38.05.64.143.863a2 2 0 0 0 1.083 1.083C10.602 22 11.068 22 12 22s1.398 0 1.765-.152a2 2 0 0 0 1.083-1.083c.092-.223.129-.483.143-.863c.02-.558.307-1.074.79-1.353a1.62 1.62 0 0 1 1.567-.008c.336.178.579.276.819.308a2 2 0 0 0 1.479-.396c.315-.242.548-.646 1.014-1.453s.7-1.21.751-1.605a2 2 0 0 0-.396-1.479c-.148-.192-.355-.353-.676-.555A1.62 1.62 0 0 1 19.562 12c0-.558.304-1.064.777-1.36c.321-.203.529-.364.676-.556a2 2 0 0 0 .396-1.479c-.052-.394-.285-.798-.75-1.605c-.467-.807-.7-1.21-1.015-1.453a2 2 0 0 0-1.479-.396c-.24.032-.483.13-.82.308a1.62 1.62 0 0 1-1.566-.008a1.62 1.62 0 0 1-.79-1.353c-.014-.38-.05-.64-.143-.863a2 2 0 0 0-1.083-1.083Z" opacity="0.5"/></g></svg>
+                                        <label>Settings</label>
+                                    </div></a>
+                                    <a href="{% url 'support' %}"><div class="profile-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><g fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" opacity="0.5"/><path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M10.125 8.875a1.875 1.875 0 1 1 2.828 1.615c-.475.281-.953.708-.953 1.26V13"/><circle cx="12" cy="16" r="1" fill="currentColor"/></g></svg>
+                                        <label>Support</label>
+                                    </div></a>
+                                </div>
+                                <div class="line"></div>
+                                <div class="profile-item p-3" style="color: red; font-weight: 500;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path d="M9.002 7c.012-2.175.109-3.353.877-4.121C10.758 2 12.172 2 15 2h1c2.829 0 4.243 0 5.122.879C22 3.757 22 5.172 22 8v8c0 2.828 0 4.243-.878 5.121C20.242 22 18.829 22 16 22h-1c-2.828 0-4.242 0-5.121-.879c-.768-.768-.865-1.946-.877-4.121" opacity="0.5"/><path stroke-linejoin="round" d="M15 12H2m0 0l3.5-3M2 12l3.5 3"/></g></svg>
+                                        <label><a href="{% url 'your_logout' %}">Logout</a></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+
+
+                <!-- ========================================= body items STUDENT DASHBOARD ============================================ -->
+                 <div class="all-main py-5">
+                    <div class="main-content margin">
+                        <div class="main-left">
+                            
+                            <!-- ============================================ greeting section =======================================-->
+                             <section class="all-greeting mb-4">
+                                <div class="greet-content">
+                                    <div class="greet-left"  data-aos="fade-down" data-aos-duration="1000" data-aos-delay="300">
+                                        <h1>Welcome,
+                                                <span class="username">
+                                                {% if user.username %}
+                                                    {{ user.username }}
+                                                        {% else %}
+                                                            User
+                                                        {% endif %}
+                                                            </span></h1>
+                                        <h6>Let’s learning something today</h6>
+                                        <p>Set your study plan and growth with community</p>
+                                    </div>
+                                    <div class="greet-right ">
+                                        <img src="{% static 'assets/image/gretting-img.png' %}" alt=""  data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300">
+                                    </div>
+                                </div>
+                             </section>
+                            <!-- ============================================ end of greeting section =======================================-->
+
+                                <!-- =================================== live chart =============================== -->
+                                 <div class="chart mb-4"  data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300">
+                                    <p>Hours Spent</p>
+                                     <canvas id="hoursChart"></canvas>
+                                 </div>
+                                <!-- =================================== end of live chart =============================== -->
+
+
+                                   <!-- ============================= card section ======================================== -->
+                                 <section class="all-cards mb-4">
+                                    <div class="card-header mb-4">
+                                        <h5>Top Courses Pick for You</h5>
+                                        <a href="{% url 'courses' %}">See all</a>
+                                    </div>
+                                    <div class="cards-content" >
+                                        <div class="card-item">
+                                            <div class="card-image">
+                                                <img src="{% static 'assets/image/course-img1 (2).png' %}" alt="">
+                                            </div>
+                                            <div class="card-details">
+                                                <div class="dev-title my-3">
+                                                    <label>Development</label>
+                                                </div>
+                                                <h5 class="mb-3"><a href="">Full Stack Web Development.</a></h5>
+                                                    <div class="dev-profile">
+                                                        <img src="{% static 'assets/team/team2.jpg' %}" alt="">
+                                                        <label>Created by <a href="">Ezeali Daniel</a></label>
+                                                    </div>
+                                                    <div class="line my-3"></div>
+                                                    <div class="    rank">
+                                                        <div class="rank-review">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                                                <path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z" />
+                                                            </svg>
+                                                            <label>4.9 (12k)</label>
+                                                        </div>
+                                                        <div class="view-cta">
+                                                            <a href="">
+                                                                <button class="view-btn">View Details</button>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-item">
+                                            <div class="card-image">
+                                                <img src="{% static 'assets/image/course-img6.png' %}" alt="">
+                                            </div>
+                                            <div class="card-details">
+                                                <div class="front-title my-3">
+                                                    <label>frontend</label>
+                                                </div>
+                                                <h5 class="mb-3"><a href="">Frontend Development</a></h5>
+                                                    <div class="dev-profile">
+                                                        <img src="{% static 'assets/team/team5.jpg' %}" alt="">
+                                                        <label>Created by <a href="">John Thompson</a></label>
+                                                    </div>
+                                                    <div class="line my-3"></div>
+                                                    <div class="    rank">
+                                                        <div class="rank-review">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                                                <path fill="currentColor" d="M9.153 5.408C10.42 3.136 11.053 2 12 2s1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182s.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506s-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452s-.674.15-1.328.452l-.596.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882S3.58 8.328 6.04 7.772l.636-.144c.699-.158 1.048-.237 1.329-.45s.46-.536.82-1.182z" />
+                                                            </svg>
+                                                            <label>4.9 (12k)</label>
+                                                        </div>
+                                                        <div class="view-cta">
+                                                            <a href="">
+                                                                <button class="view-btn">View Details</button>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 </section>
+                                <!-- ============================= end of card section ======================================== -->
+
+
+                                          <!-- ======================================= table section ===================================== -->
+                                            <div class="table-responsive all-table">
+                                                <div class="assign-head pb-4 mb-2">
+                                                    <h5>Your Assignments</h5>
+                                                    <a href="">See all</a>
+                                                </div>
+                                                  <table class="table align-middle mb-0 table-hover table-centered">
+                                                       <thead>
+                                                            <tr>
+                                                             
+                                                                <th>
+                                                                    <span>|</span>
+                                                                </th>
+                                                                 <th>Courses</th>
+                                                                 <th>
+                                                                    <span>|</span>
+                                                                </th>
+                                                                 <th>Progress</th>
+                                                                 <th>
+                                                                    <span>|</span>
+                                                                </th>
+                                                                 <th>Status</th>
+                                                                 <th>
+                                                                    <span>|</span>
+                                                                </th>
+                                                                 
+                                                            </tr>
+                                                       </thead>
+                                                       <tbody>
+                                                         
+                                                            <tr>
+                                                                
+                                                                <td></td>
+                                                                <td>
+                                                                    <div class="user-profile">
+                                                                        <img  class="bg-primary" src="{% static 'assets/image/images (1).png' %}" alt="">
+                                                                        <label>Frontend Development</label>
+                                                                    </div>
+                                                                </td>
+                                                                <td></td>
+                                                                <td>
+                                                                    <div class="all-bars">
+                                                                        <div class="outer-bar">
+                                                                            <div class="inner-bar"></div>
+                                                                        </div>
+                                                                        <label>87%</label>
+                                                                    </div>
+                                                                </td>
+                                                                <td></td>
+                                                                <td>
+                                                                    <span class="status-badge">
+                                                                        <i class="fas fa-circle"></i>
+                                                                        <label>In Progress</label>
+                                                                    </span>
+                                                                </td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                
+                                                                <td></td>
+                                                                <td>
+                                                                    <div class="user-profile">
+                                                                        <img  class="bg-primary" src="{% static 'assets/image/images.png' %}" alt="">
+                                                                        <label>Figma for Beginner</label>
+                                                                    </div>
+                                                                </td>
+                                                                <td></td>
+                                                                <td>
+                                                                    <div class="all-bars">
+                                                                        <div class="outer-bar">
+                                                                            <div class="inner-bar-1"></div>
+                                                                        </div>
+                                                                        <label>100%</label>
+                                                                    </div>
+                                                                </td>
+                                                                <td></td>
+                                                                <td>
+                                                                    <span class="status-badge-1">
+                                                                        <i class="fas fa-circle"></i>
+                                                                        <label>Completed</label>
+                                                                    </span>
+                                                                </td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                
+                                                                <td></td>
+                                                                <td>
+                                                                    <div class="user-profile">
+                                                                        <img  class="bg-primary" src="{% static 'assets/image/images (1).png' %}" alt="">
+                                                                        <label>Frontend Development</label>
+                                                                    </div>
+                                                                </td>
+                                                                <td></td>
+                                                                <td>
+                                                                    <div class="all-bars">
+                                                                        <div class="outer-bar">
+                                                                            <div class="inner-bar"></div>
+                                                                        </div>
+                                                                        <label>87%</label>
+                                                                    </div>
+                                                                </td>
+                                                                <td></td>
+                                                                <td>
+                                                                    <span class="status-badge">
+                                                                        <i class="fas fa-circle"></i>
+                                                                        <label>In Progress</label>
+                                                                    </span>
+                                                                </td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                
+                                                                <td></td>
+                                                                <td>
+                                                                    <div class="user-profile">
+                                                                        <img  class="bg-primary" src="{% static 'assets/image/images.png' %}" alt="">
+                                                                        <label>Figma for Beginner</label>
+                                                                    </div>
+                                                                </td>
+                                                                <td></td>
+                                                                <td>
+                                                                    <div class="all-bars">
+                                                                        <div class="outer-bar">
+                                                                            <div class="inner-bar-1"></div>
+                                                                        </div>
+                                                                        <label>100%</label>
+                                                                    </div>
+                                                                </td>
+                                                                <td></td>
+                                                                <td>
+                                                                    <span class="status-badge-1">
+                                                                        <i class="fas fa-circle"></i>
+                                                                        <label>Completed</label>
+                                                                    </span>
+                                                                </td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                
+                                                                <td></td>
+                                                                <td>
+                                                                    <div class="user-profile">
+                                                                        <img  class="bg-primary" src="{% static 'assets/image/images (1).png' %}" alt="">
+                                                                        <label>Frontend Development</label>
+                                                                    </div>
+                                                                </td>
+                                                                <td></td>
+                                                                <td>
+                                                                    <div class="all-bars">
+                                                                        <div class="outer-bar">
+                                                                            <div class="inner-bar"></div>
+                                                                        </div>
+                                                                        <label>87%</label>
+                                                                    </div>
+                                                                </td>
+                                                                <td></td>
+                                                                <td>
+                                                                    <span class="status-badge">
+                                                                        <i class="fas fa-circle"></i>
+                                                                        <label>In Progress</label>
+                                                                    </span>
+                                                                </td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                
+                                                                <td></td>
+                                                                <td>
+                                                                    <div class="user-profile">
+                                                                        <img  class="bg-primary" src="{% static 'assets/image/images.png' %}" alt="">
+                                                                        <label>Figma for Beginner</label>
+                                                                    </div>
+                                                                </td>
+                                                                <td></td>
+                                                                <td>
+                                                                    <div class="all-bars">
+                                                                        <div class="outer-bar">
+                                                                            <div class="inner-bar-1"></div>
+                                                                        </div>
+                                                                        <label>100%</label>
+                                                                    </div>
+                                                                </td>
+                                                                <td></td>
+                                                                <td>
+                                                                    <span class="status-badge-1">
+                                                                        <i class="fas fa-circle"></i>
+                                                                        <label>Completed</label>
+                                                                    </span>
+                                                                </td>
+                                                                <td></td>
+                                                            </tr>
+                                                          
+                                                       </tbody>
+                                                  </table>
+                                            </div>
+                                             <!-- end table-responsive -->
+
+
+                              
+                                  
+                        </div>
+                        <div class="main-right">
+                            <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=UTC&showTz=0&showPrint=0&mode=MONTH&showNav=0&showCalendars=0&showTabs=0&src=ZjBmMGVjMTU5YmFiMWVjNWRhOGUzYjhlZDEyMDhjOWI0NzhlZTg5MTc1MjIzOTRhYjQ5NTBiMjU3OTA1MTQ4ZUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23ef6c00" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+                            
+                            <!-- ======================== assignment section ================================ -->
+                             <section class="all-assignment mt-4">
+                                <div class="assign-head mb-3">
+                                    <h5>Assignments</h5>
+                                    <a href="">See all</a>
+                                </div>
+                                <div class="assignment-content">
+                                <a href="">
+                                    <div class="assign-items">
+                                        <div class="assign-left">
+                                            <div class="assign-left-icon mb-3">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                                    <path fill="currentColor" d="M14.217 3.5a5.17 5.17 0 0 0-4.434 0L5.489 5.512a2.25 2.25 0 0 1 .647 4.306l-1.076.461c-.534.23-.837.362-1.042.467l-.003.05L9.783 13.5a5.17 5.17 0 0 0 4.434 0l6.691-3.137c1.456-.682 1.456-3.044 0-3.726z" />
+                                                    <path fill="currentColor" d="M5.545 8.44a.75.75 0 0 0-.59-1.38l-1.112.477c-.557.239-1.03.441-1.4.65c-.395.222-.734.482-.989.868c-.254.386-.36.8-.408 1.25C1 10.729 1 11.243 1 11.85v2.901a.75.75 0 0 0 1.5 0v-2.862c0-.656.001-1.088.037-1.421c.034-.315.093-.47.17-.586c.075-.115.195-.231.471-.387c.292-.164.689-.335 1.292-.593z" />
+                                                    <path fill="currentColor" d="M5 11.258L9.783 13.5a5.17 5.17 0 0 0 4.434 0L19 11.258v5.367c0 1.008-.503 1.952-1.385 2.44C16.146 19.88 13.796 21 12 21s-4.146-1.121-5.615-1.935C5.504 18.577 5 17.633 5 16.625z" opacity="0.5" />
+                                                </svg>
+                                                </div>
+                                                <h6>Do The Research </h6>
+                                                <p>Due in 9 days</p>
+                                        </div>
+                                     
+                                        <div class="assign-right">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
+                                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m9 5l6 7l-6 7" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </a>   
+                                <a href="">
+                                    <div class="assign-items">
+                                        <div class="assign-left">
+                                            <div class="assign-left-icon mb-3">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                                    <path fill="currentColor" d="M16.443 7.328a.75.75 0 0 1 1.059-.056l1.737 1.564c.737.663 1.347 1.212 1.767 1.71c.44.525.754 1.088.754 1.784c0 .695-.313 1.258-.754 1.782c-.42.499-1.03 1.049-1.767 1.711l-1.737 1.564a.75.75 0 1 1-1.004-1.115l1.697-1.527c.788-.709 1.319-1.19 1.663-1.598c.33-.393.402-.622.402-.817c0-.196-.072-.425-.402-.818c-.344-.409-.875-.889-1.663-1.598l-1.697-1.527a.75.75 0 0 1-.056-1.06m-8.94 1.06a.75.75 0 0 0-1.004-1.115L4.761 8.836c-.737.663-1.347 1.212-1.767 1.71c-.44.525-.754 1.088-.754 1.784c0 .695.313 1.258.754 1.782c.42.499 1.03 1.049 1.767 1.711l1.737 1.564a.75.75 0 1 0 1.004-1.115l-1.697-1.527c-.788-.709-1.319-1.19-1.663-1.598c-.33-.393-.402-.622-.402-.817c0-.196.072-.425.402-.818c.344-.409.875-.889 1.663-1.598z" />
+                                                    <path fill="currentColor" d="M14.182 4.276a.75.75 0 0 1 .53.918l-3.974 14.83a.75.75 0 1 1-1.449-.389l3.974-14.83a.75.75 0 0 1 .919-.53" opacity="0.5" />
+                                                </svg>
+                                                </div>
+                                                <h6>PHP Development</h6>
+                                                <p>Due in 2 days</p>
+                                        </div>
+                                     
+                                        <div class="assign-right">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
+                                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m9 5l6 7l-6 7" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </a>   
+                                <a href="">
+                                    <div class="assign-items">
+                                        <div class="assign-left">
+                                            <div class="assign-left-icon mb-3">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                                    <g fill="none" stroke="currentColor" stroke-width="1.5">
+                                                        <path d="M4.979 9.685C2.993 8.891 2 8.494 2 8s.993-.89 2.979-1.685l2.808-1.123C9.773 4.397 10.767 4 12 4s2.227.397 4.213 1.192l2.808 1.123C21.007 7.109 22 7.506 22 8s-.993.89-2.979 1.685l-2.808 1.124C14.227 11.603 13.233 12 12 12s-2.227-.397-4.213-1.191z" />
+                                                        <path d="m5.766 10l-.787.315C2.993 11.109 2 11.507 2 12s.993.89 2.979 1.685l2.808 1.124C9.773 15.603 10.767 16 12 16s2.227-.397 4.213-1.191l2.808-1.124C21.007 12.891 22 12.493 22 12s-.993-.89-2.979-1.685L18.234 10M5.766 14l-.787.315C2.993 15.109 2 15.507 2 16s.993.89 2.979 1.685l2.808 1.124C9.773 19.603 10.767 20 12 20s2.227-.397 4.213-1.192l2.808-1.123C21.007 16.891 22 16.494 22 16c0-.493-.993-.89-2.979-1.685L18.234 14" opacity="0.5" />
+                                                    </g>
+                                                </svg>
+                                                </div>
+                                                <h6>Graphic Design</h6>
+                                                <p>Due in 5 days</p>
+                                        </div>
+                                     
+                                        <div class="assign-right">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
+                                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m9 5l6 7l-6 7" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </a>   
+                                </div>
+                             </section>
+                            <!-- ======================== end of assignment section ================================ -->
+
+
+                            <!-- ======================== Practice code section ================================ -->
+                             <section class="all-assignment mt-4">
+                                <div class="assign-head mb-3">
+                                    <h5>Practice Code</h5>
+                                    <a href="">See all</a>
+                                </div>
+                                <div class="assignment-content">
+                                <a href="">
+                                    <div class="assign-items">
+                                        <div class="assign-left">
+                                            <div class="assign-left-icon mb-3">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                                    <path fill="currentColor" d="M14.217 3.5a5.17 5.17 0 0 0-4.434 0L5.489 5.512a2.25 2.25 0 0 1 .647 4.306l-1.076.461c-.534.23-.837.362-1.042.467l-.003.05L9.783 13.5a5.17 5.17 0 0 0 4.434 0l6.691-3.137c1.456-.682 1.456-3.044 0-3.726z" />
+                                                    <path fill="currentColor" d="M5.545 8.44a.75.75 0 0 0-.59-1.38l-1.112.477c-.557.239-1.03.441-1.4.65c-.395.222-.734.482-.989.868c-.254.386-.36.8-.408 1.25C1 10.729 1 11.243 1 11.85v2.901a.75.75 0 0 0 1.5 0v-2.862c0-.656.001-1.088.037-1.421c.034-.315.093-.47.17-.586c.075-.115.195-.231.471-.387c.292-.164.689-.335 1.292-.593z" />
+                                                    <path fill="currentColor" d="M5 11.258L9.783 13.5a5.17 5.17 0 0 0 4.434 0L19 11.258v5.367c0 1.008-.503 1.952-1.385 2.44C16.146 19.88 13.796 21 12 21s-4.146-1.121-5.615-1.935C5.504 18.577 5 17.633 5 16.625z" opacity="0.5" />
+                                                </svg>
+                                                </div>
+                                                <h6>JavaScript : Q&A</h6>
+                                                <p><strong>Duration : </strong>20 mins</p>
+                                        </div>
+                                     
+                                        <div class="assign-right">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
+                                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m9 5l6 7l-6 7" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </a>   
+                                <a href="">
+                                    <div class="assign-items">
+                                        <div class="assign-left">
+                                            <div class="assign-left-icon mb-3">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                                    <path fill="currentColor" d="M14.217 3.5a5.17 5.17 0 0 0-4.434 0L5.489 5.512a2.25 2.25 0 0 1 .647 4.306l-1.076.461c-.534.23-.837.362-1.042.467l-.003.05L9.783 13.5a5.17 5.17 0 0 0 4.434 0l6.691-3.137c1.456-.682 1.456-3.044 0-3.726z" />
+                                                    <path fill="currentColor" d="M5.545 8.44a.75.75 0 0 0-.59-1.38l-1.112.477c-.557.239-1.03.441-1.4.65c-.395.222-.734.482-.989.868c-.254.386-.36.8-.408 1.25C1 10.729 1 11.243 1 11.85v2.901a.75.75 0 0 0 1.5 0v-2.862c0-.656.001-1.088.037-1.421c.034-.315.093-.47.17-.586c.075-.115.195-.231.471-.387c.292-.164.689-.335 1.292-.593z" />
+                                                    <path fill="currentColor" d="M5 11.258L9.783 13.5a5.17 5.17 0 0 0 4.434 0L19 11.258v5.367c0 1.008-.503 1.952-1.385 2.44C16.146 19.88 13.796 21 12 21s-4.146-1.121-5.615-1.935C5.504 18.577 5 17.633 5 16.625z" opacity="0.5" />
+                                                </svg>
+                                                </div>
+                                                <h6>Html & Css : Q&A</h6>
+                                                <p><strong>Duration : </strong>15 mins</p>
+                                        </div>
+                                     
+                                        <div class="assign-right">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
+                                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m9 5l6 7l-6 7" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </a>   
+                                <a href="">
+                                    <div class="assign-items">
+                                        <div class="assign-left">
+                                            <div class="assign-left-icon mb-3">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                                    <path fill="currentColor" d="M14.217 3.5a5.17 5.17 0 0 0-4.434 0L5.489 5.512a2.25 2.25 0 0 1 .647 4.306l-1.076.461c-.534.23-.837.362-1.042.467l-.003.05L9.783 13.5a5.17 5.17 0 0 0 4.434 0l6.691-3.137c1.456-.682 1.456-3.044 0-3.726z" />
+                                                    <path fill="currentColor" d="M5.545 8.44a.75.75 0 0 0-.59-1.38l-1.112.477c-.557.239-1.03.441-1.4.65c-.395.222-.734.482-.989.868c-.254.386-.36.8-.408 1.25C1 10.729 1 11.243 1 11.85v2.901a.75.75 0 0 0 1.5 0v-2.862c0-.656.001-1.088.037-1.421c.034-.315.093-.47.17-.586c.075-.115.195-.231.471-.387c.292-.164.689-.335 1.292-.593z" />
+                                                    <path fill="currentColor" d="M5 11.258L9.783 13.5a5.17 5.17 0 0 0 4.434 0L19 11.258v5.367c0 1.008-.503 1.952-1.385 2.44C16.146 19.88 13.796 21 12 21s-4.146-1.121-5.615-1.935C5.504 18.577 5 17.633 5 16.625z" opacity="0.5" />
+                                                </svg>
+                                                </div>
+                                                <h6>UI/UX : Q&A</h6>
+                                                <p><strong>Duration : </strong>15 mins</p>
+                                        </div>
+                                     
+                                        <div class="assign-right">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
+                                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m9 5l6 7l-6 7" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </a>   
+                                </div>
+                             </section>
+                            <!-- ======================== end of practice code section ================================ -->
+
+                        </div>
+                    </div>
+                 </div>
+                <!-- ========================================= end of body items STUDENT DASHBOARD ============================================ -->
+
+
+                 <!-- ================================================= footer section ===================================== -->
+                    <footer class="all-footer">
+                        <div class="footer-content">
+                            <p>Copyright &copy; 2025 <span>MyClassAI.</span></p>
+                        </div>
+                    </footer>
+                    <!-- ================================================= end of footer section ===================================== -->
+            </div>
+        <!-- ================================== end of dash body section ================================ -->
+        </div>
+</section>
+
+
+
+<script src="{% static 'assets/js/student-chart.js' %}"></script>
+<script src="{% static 'assets/js/dash-navigate.js' %}"></script>
+<script src="{% static 'assets/js/dash-body.js' %}"></script>
+<script src="{% static 'assets/js/sidebar.js' %}"></script>
+
+   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init(); // Initialize AOS
+    </script>
+</body>
+</html>

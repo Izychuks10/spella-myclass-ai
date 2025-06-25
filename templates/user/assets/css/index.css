@@ -1,0 +1,1065 @@
+*{
+    margin: 0;
+}
+
+/* =========================================== global design ============================================ */
+:root{
+    --body:#1a233a;
+    --text:#8a99b5;
+    --border:#283557;
+    --primary:rgb(255, 255, 255);
+    --card:#d8e6fe;
+    --btn:linear-gradient(to right, rgb(255, 0, 0), 60.5%, rgb(30, 31, 32) 100%);
+    --light:#ccc;
+    --main:#f7f7f7;
+}
+
+.intro label{
+    font-weight: bold;
+    font-size: 11px;
+    margin-bottom: 6px;
+    padding:10px 35px 5px 35px;
+}
+.main-btn {
+    border: none;
+    outline: none;
+    background: var(--btn);
+    color: var(--main);
+    padding: 9px 30px;
+    border-radius: 4px;
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+}
+.main-btn-2 {
+    border: none;
+    outline: none;
+    background: var(--btn);
+    color: var(--main);
+    padding: 9px 30px;
+    border-radius: 4px;
+}
+.save-cta {
+    display: flex;
+    justify-content: right;
+}
+a{
+    text-decoration: none;
+}
+body{
+    /* background-color: var(--body); */
+}
+.line {
+    height: 1px;
+    width: 100%;
+    background: var(--light);
+}
+.margin {
+    margin: 0 2%;
+}
+.view-btn {
+    border: 1px solid rgb(71, 71, 243);
+    outline: none;
+    color: rgb(71, 71, 243);
+    background: transparent;
+    padding: 8px 20px;
+    font-size: 15px;
+    border-radius: 20px;
+
+}
+.plan-btn {
+    border: 1px solid rgb(160, 160, 238);
+    color: rgb(71, 71, 243);
+    outline: none;
+    background-color: transparent;
+    padding: 10px;
+    width: 100%;
+    border-radius: 30px;
+    transition: .50s ease-in;
+}
+.plan-btn:hover {
+    color: white;
+    background-color: rgb(94, 94, 238);
+}
+.view-btn-1 {
+    border: 1px solid rgb(71, 71, 243);
+    outline: none;
+    color: rgb(71, 71, 243);
+    background: transparent;
+    padding: 5px 20px;
+    font-size: 13px;
+    border-radius: 20px;
+    display: flex;
+    width: 100%;
+
+}
+/* =========================================== end of global design ============================================ */
+
+/* ======================================== dashbard content ========================================================= */
+.dashboard-content {
+    display: flex;
+
+}
+.dash-sidebar {
+    width: 19%;
+    border-right: 1px solid var(--border);
+    background: var(--body);
+    color: var(--text);
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 50px;
+}
+.dash-sidebar::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+#sidebars::-webkit-scrollbar {
+    width: 10px;
+}
+#sidebars {
+    position: fixed;
+    top: 0;
+    left: -1000px;
+    height: 100vh;
+    background:var(--body);
+    width: 25%;
+    color: var(--text);
+    transition: left 1s ease;
+    display: none;
+    z-index: 10000;
+    overflow-y: auto;
+    overflow-x: hidden;
+     padding-bottom: 100px;
+}
+#sidebars.show{
+    left: 0;
+}
+#bars{
+    display: none;
+    cursor: pointer;
+}
+.no-scroll {
+    overflow: hidden;
+}
+.wrap-image {
+    display: none;
+}
+.side-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px 10px 20px;
+    margin-bottom: 20px;
+    position: sticky;
+    top: 0;
+    background: var(--body);
+}
+.side-logo img{
+    cursor: pointer;
+}
+.side-nav i{
+    cursor: pointer;
+}
+
+.sidebar-item-1 {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 35px;
+    transition: 0.30s ease;
+}
+.sidebar-item-1 label{
+    font-weight: bold;
+    font-size: 15px;
+}
+.sidebar-items{
+    margin: 0 20px 0 0;
+}
+.sidebar-items a {
+    color:var(--text) ;
+}
+.submenu{
+    margin-left: 55px;
+    line-height: 14px;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.5s ease;
+    pointer-events: none;
+    opacity: 0;
+}
+.submenu.open {
+    pointer-events: auto;
+    opacity: 1;
+}
+.submenu p{
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.submenu a{
+    color: var(--text);
+}
+.submenu p:nth-child(1) {
+    margin-top: 14px;
+}
+.submenu p:hover{
+    color:  rgb(121, 121, 255);;
+}
+.submenu a:hover{
+    color:  rgb(121, 121, 255);;
+}
+.sidebar-item-1:hover{
+    border-left: 3px solid rgb(117, 117, 239);
+    /* background: #343e58; */
+    background: rgba(255, 255, 255, 0.1);
+    color:  rgb(121, 121, 255);
+    cursor: pointer;
+}
+.sidebar-item-1.active{
+    border-left: 3px solid rgb(117, 117, 239);
+    background: rgba(255, 255, 255, 0.1);
+    color:  rgb(121, 121, 255);
+    cursor: pointer;
+}
+.side-drop.active{
+    color:  rgb(121, 121, 255);
+}
+.dash-sidebar-content a{
+    color: var(--text);
+}
+/* ======================================== end of dashbard content ========================================================= */
+
+
+/* ================================ dash body section =========================================== */
+.search input{
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #555;
+    width: 100%;
+}
+.first-item a{
+    color: #555;
+}
+.search {
+    display: flex;
+    align-items: center;
+    /* border: 1px solid var(--border); */
+    background:#ddd;
+    padding: 8px;
+    gap: 5px;
+    border-radius: 8px;
+}
+.search ::placeholder{
+    color: #555;
+    font-size: 14px;
+}
+.side-nav-1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    /* border-bottom: 1px solid #ddd; */
+    position: sticky;
+    top: 0;
+    background:var(--main) ;
+    color: #555;
+    z-index: 1000;
+}
+.profile-pic img{
+    width: 45px;
+    height: 45px;
+    border-radius: 100px;
+    cursor: pointer;
+}
+.side-nav-1-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.side-nav-1-content svg{
+    cursor: pointer;
+}
+.profile-item label{
+    font-size: 13px;
+    cursor: pointer;
+}
+.profile-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    cursor: pointer;
+}
+.profile-nav {
+    display: block;
+}
+.profile-nav-items h6{
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+.profile-nav-items {
+    /* border: 1px solid var(--border); */
+    background: var(--primary);
+    border-radius: 10px;
+    min-width: 160px;
+    z-index: 2;
+    position: absolute;
+    right: 30px;
+    top:85px;
+    display: none;
+    transition: 1s ease-in-out;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.dash-body::-webkit-scrollbar {
+    width: 1px;
+}
+.dash-body {
+    width: 81%;
+    background:var(--main);
+    color: #555;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.main-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+.main-left {
+    width: 75%;
+}
+.main-right {
+    width: 25%;
+}
+.main-right iframe{
+    width: 100%;
+    height: 50vh;
+    border-radius: 10px;
+}
+.main-left-item {
+    display: flex;
+    align-items: center;
+    background: var(--primary);
+    padding: 30px 20px;
+    border-radius: 10px;
+    gap: 20px;
+    justify-content: space-between;
+    color: #555;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.main-left-icon{
+    padding: 13px;
+    background-color: rgb(248, 232, 234);
+    border-radius: 100px;
+    width: fit-content;
+}
+.main-left-icon svg{
+    width: 35px;
+    height: 35px;
+    color:  rgb(98, 98, 227);
+}
+.m{
+    padding: 13px;
+    background-color: rgb(248, 232, 234);
+    border-radius: 100px;
+}
+.assign-left svg{
+    width: 35px;
+    height: 35px;
+    color:  rgb(98, 98, 227);
+}
+.assign-left-icon{
+    padding: 13px;
+    background-color:  rgb(234, 234, 253);
+    border-radius: 100px;
+    width: fit-content;
+}
+.assign-left p{
+    font-size: 14px;
+}
+.assign-items {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid var(--light);
+    padding: 20px 20px 10px 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+.assignment-content a{
+    color: unset;
+}
+.assignment-content {
+    display: block;
+}
+.all-assignment {
+    padding: 15px;
+    background:var(--primary);
+    border-radius: 20px;
+}
+.assign-head {
+    display: flex;
+    align-items:flex-start;
+    justify-content: space-between;
+}
+.main-left-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+.main-left-title h5{
+    font-size: 15px;
+}
+.chart {
+    border-radius: 10px;
+    padding: 20px;
+    background: var(--primary);
+    /* height: auto; */
+}
+/* ================================ end of dash body section =========================================== */
+
+/* ==========================================  card section ============================================= */
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.card-header h5{
+    font-weight: bold;
+}
+.all-cards {
+    background-color: var(--primary);
+    padding: 30px;
+    border-radius: 20px;
+}
+.cards-content{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+.cards-content-1{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+.card-image {
+    background: var(--card);
+    padding: 20px;
+    border-radius: 20px;
+}
+.card-image img{
+    display: flex;
+    justify-self: center;
+    /* width: 180px; */
+}
+.card-image-1 img{
+    display: flex;
+    justify-self: center;
+    width: 100%;
+}
+.card-item {
+    border: 1px solid var(--light) ;
+    border-radius: 20px;
+    padding: 15px 15px 20px 15px;
+    height: fit-content;
+}
+.dev-title label{
+    font-size: 13px;
+    color: rgb(0, 121, 0);
+}
+.dev-title {
+    padding: 3px 15px 6px 15px;
+    background: #c5ecd2;
+    border-radius: 20px;
+    width: fit-content;
+}
+.front-title label{
+    font-size: 13px;
+    color: rgb(206, 17, 0);
+}
+.front-title {
+    padding: 3px 15px 6px 15px;
+    background: #f4cfce;
+    border-radius: 20px;
+    width: fit-content;
+}
+.card-details a{
+    color:#555;
+}
+.dev-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.dev-profile img{
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+}
+.dev-profile label{
+    font-size: 13px;
+}
+.dev-profile a{
+    color: black;
+}
+.dev-profile a:hover{
+    color:  rgb(72, 72, 222);
+    text-decoration: underline;
+}
+.rank-review svg{
+    width: 16px;
+    height: 16px;
+    color: gold;
+}
+.rank-review {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.teachers-review-item svg{
+    width: 16px;
+    height: 16px;
+    color: gold;
+}
+.teachers-review-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 10px;
+}
+.rank {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+/* ========================================== end of card section ============================================= */
+
+
+/* ======================================== footer section =========================================== */
+.footer-content {
+    text-align: center;
+}
+.all-footer{
+    /* background-color: var(--primary); */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.168);
+    padding: 20px 0 1px 0;
+}
+.footer-content span{
+    font-weight: 500;
+}
+.footer-content p{
+    font-size: 14px;
+}
+/* ======================================== end of footer section =========================================== */
+
+
+
+/* ======================================= student dashboard section ================================================================= */
+.greet-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.all-greeting {
+    background: linear-gradient(rgba(86, 86, 255, 0.583), rgba(62, 62, 229, 0.665)), url(../image/grettings-pattern.png) no-repeat center center/cover;
+    padding: 20px;
+    border-radius: 15px;
+}
+.greet-right img{
+    width: 100%;
+}
+.greet-left{
+    color: var(--primary);
+}
+.greet-left h1 {
+    margin-bottom: 20px;
+}
+/* ======================================= end of student dashboard section ================================================================= */
+
+
+/* ====================================== student table section ================================================== */
+ .status-badge {
+      display: inline-flex;
+      align-items: center;
+      background-color: #fcedda;
+      color: var(--light);
+      font-weight: 500;
+      padding: 2px 12px;
+      border-radius: 999px;
+      font-size: 14px;
+    }
+
+    .status-badge i {
+      font-size: 8px;
+      margin-right: 6px;
+      color: #fa8c16;
+    }
+    .status-badge label{
+        color: #fa8c16;
+    }
+
+ .status-badge-1 {
+      display: inline-flex;
+      align-items: center;
+      background-color: #d9fbe7;
+      color: #17b46f;
+      font-weight: 500;
+      padding: 2px 12px;
+      border-radius: 999px;
+      font-size: 14px;
+    }
+
+    .status-badge-1 i {
+      font-size: 8px;
+      margin-right: 6px;
+      color: #17b46f;
+    }
+    .status-badge-1 label{
+        color: #17b46f;
+    }
+
+.outer-bar{
+    height: 4px;
+    min-width: 150px;
+    background: var(--light);
+    border-radius: 5px;
+}
+.inner-bar{
+    height: 4px;
+    width: 87%;
+    background: rgb(117, 117, 239);
+    border-radius: 5px 0 0 5px;
+}
+.outer-bar-2{
+    height: 9px;
+    width: 100%;
+    background-color:  rgb(209, 229, 248);
+    border-radius: 10px;
+}
+.inner-bar-2{
+    height: 9px;
+    width: 45%;
+    background: rgb(117, 117, 239);
+    border-radius: 10px;
+}
+.inner-bar-1{
+    height: 4px;
+    width: 100%;
+    background: rgb(117, 117, 239);
+    border-radius: 5px;
+}
+.all-bars {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+.all-bars label{
+    font-size: 13px;
+}
+.all-table {
+    padding: 20px;
+    background: var(--primary);
+    border-radius: 10px;
+}
+table {
+    border-radius: 20%;
+}
+.table th{
+    font-size: 15px;
+    color: #555;
+    background: rgba(11, 0, 226, 0.04);
+}
+.table span{
+    color: #ccc;
+    font-weight: lighter;
+}
+.table td{
+    font-size: 14px;
+}
+.course-table-title p{
+    font-weight: bold;
+    color: #555;
+    font-size: 20px;
+}
+.user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+}
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.table input{
+    accent-color: rgb(98, 98, 227);
+    width: 16px;
+    height: 16px;
+}
+/* ====================================== end of student table section ================================================== */
+
+/* ======================================= setting section ====================================================== */
+
+.profile-left img{
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+.profile-left {
+    text-align: center;
+}
+#file-input {
+    display: none;
+}
+.edit-icon svg{
+    font-size: 1.5rem;
+    /* background-color:rgba(0, 0, 0, 0.738); */
+    width: fit-content;
+    color: #675e5e;
+    /* padding: 10px; */
+    position: absolute;
+    bottom: 15px;
+    right: 1px;
+}
+.edit-icon {
+    position: relative;
+}
+.edit-profile {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+.edit-profile-left img{
+    width: 180px;
+    height: 180px;
+    border-radius: 100%;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+.profile-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.profile-right p span {
+    display: block;
+}
+.profile-right p {
+    margin-bottom: 20px;
+}
+.profile-right h5{
+    font-weight: bold;
+    background: linear-gradient(to left,black, red);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+}
+.all-profile {
+    /* background: var(--primary); */
+    border: 1px solid var(--light);
+    padding: 20px;
+    border-radius: 10px;
+}
+.personal-item h6{
+    font-weight: bold;
+}
+.personal-item p{
+    font-size: 15px;
+}
+.personal-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.edit-input-content label{
+    display: block;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+.edit-input-content input {
+    width: 100%;
+    border: 1px solid #ccc;
+    background-color: transparent;
+    outline: none;
+    padding: 10px;
+    border-radius: 7px;
+    margin-bottom: 15px;
+}
+.edit-input-content select {
+    width: 100%;
+    border: 1px solid #ccc;
+    background-color: transparent;
+    outline: none;
+    padding: 10px;
+    border-radius: 7px;
+    margin-bottom: 20px;
+}
+.edit-input-content{
+    width: 100%;
+}
+.all-edit-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+/* ======================================= end of  setting section ====================================================== */
+
+
+/* ======================================== course-section ============================================ */
+.course-title{
+    text-align: center;
+    margin-bottom: 50px;
+}
+.course-title h1{
+    color: black    ;
+    font-weight: bold;
+    font-size: 50px;
+}
+.course-title p{
+    font-size: 18px;
+    color: #555;
+}
+.first-course {
+    background:var(--primary);
+    padding: 20px;
+    /* border: 1px solid rgb(177, 18, 18); */
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+.first-course img{
+    width: 130px;
+    border-radius: 10px;
+    height: fit-content;
+}
+.first-course h5{
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 20px;
+}
+.first-course p{
+    color: #555;
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+    font-size: 15px;
+}
+.first-course p span{
+    color: var(--secondary);
+    font-size: 13px;
+}
+.first-course p i{
+    color: gold;
+}
+.first-course h6 {
+    background: linear-gradient(to right,#6e6e6e, red);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    font-size: 15px;
+}
+.google {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    width: fit-content;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    background: #f6f6f6;
+    cursor: pointer;
+}
+.google img{
+    width: 30px;
+}
+.google label {
+    color: #555;
+    font-size: 13px;
+}
+.course-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+/* ======================================== end of course-section ============================================ */
+
+/* ============================================== support section ====================================== */
+.all-support {
+    background: linear-gradient(rgba(66, 65, 65, 0.579), rgba(66, 65, 65, 0.579)), url(../image/bg.jpg) no-repeat center center/cover;
+    border-radius: 15px;
+    padding: 20px 0;
+}
+.support {
+    text-align: center;
+}
+.support-search input{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #555;
+    width: 100%;
+}
+.support-search svg{
+    color: #555;
+}
+.support-search {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background-color: var(--primary);
+    padding: 6px 10px;
+    border-radius: 30px;
+    width: 50%;
+    justify-self: center;
+
+}
+.support-content h3{
+    color: var(--primary);
+    font-weight: bold;
+}
+.support-content p{
+    color: var(--light);
+}
+.producer-name img{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+}
+.producer-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.producer-name span{
+    color: rgb(255, 66, 66);
+    font-weight: 500;
+}
+.support-card-item {
+    background: var(--primary);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.support-icon i{
+    font-size: 1.5rem;
+}
+.support-icon {
+    background: rgb(255, 234, 234);
+    width: fit-content;
+    padding: 15px 15px 10px 15px;
+    border-radius: 10px;
+}
+.support-card-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+/* ============================================== end of support section ====================================== */
+
+
+/* ================================================ teachers section ========================================= */
+.teacher-profile img{
+    width: 55px;
+    height: 55px;
+    border-radius: 100%;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+.teacher-profile {
+    position: relative;
+    bottom: 23px;
+}
+.teacher-profile p{
+    font-size: 12px;
+}
+.teacher-profile{
+    text-align: center;
+}
+.teachers-banner img{
+    width: 100%;
+}
+.teachers-banner {
+    position: relative;
+}
+.teacher-dscription h6 {
+    font-size: 15px;
+    font-weight: 400;
+    padding: 0 10px;
+}
+.teachers {
+    border: 1px solid #ccc;
+    border-radius: 30px 30px 10px 10px;
+    height: fit-content;
+}
+/* ================================================ end of teachers section ========================================= */
+
+
+/* ================================================= pricing section ============================================== */
+.plan-amount {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.plan-amount h1{
+    color: rgb(71, 71, 243);
+    font-weight: 400;
+    font-size: 45px;
+}
+.plan-amount h1 i{
+    color: rgb(71, 71, 243);
+    font-weight: 400;
+}
+.plan svg{
+    color: rgb(71, 71, 243);
+}
+.plan h4{
+    margin-top: 15px;
+    font-weight: 700;
+}
+.plan-items {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.plan-items {
+    margin-bottom: 18px;
+}
+.all-plan {
+    padding: 20px 20px 5px 20px;
+}
+/* ================================================= end of pricing section ============================================== */
+
+/* ===================================== donut chart section ========================================== */
+    .legend {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 1rem;
+      font-size: 14px;
+    }
+    .legend-item {
+        display:block;
+        text-align: center;
+        gap: 20px;
+    }
+    .blue { color: #347eff; }
+    .green { color: #20e3b2; }
+    .orange { color: #fd8f39; }
+
+    .legend-item span{
+        display: block;
+        text-align: center;
+    }
+/* ===================================== end of donut chart section ========================================== */

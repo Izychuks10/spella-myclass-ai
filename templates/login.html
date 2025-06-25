@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'assets/image/favicon.png' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'assets/image/20250614_180036.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'assets/dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/icons/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/register.css' %}">
+    <title>Login</title>
+</head>
+<body>
+    <section class="all-register">
+        <div class="register-content margin">
+            <div class="register-left">
+                <div class="register-logo mb-5">
+                   <a href="{% url 'index' %}">
+                        <img width="100" src="{% static 'assets/image/logo.png' %}" alt="Logo">
+                    </a>
+                </div>
+                <div class="register-head mb-4">
+                    <h4>Sign In</h4>
+                    <p>Please login to your account.</p>
+                </div>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+                    <label for="{{ form.username.id_for_label }}">Username</label>
+                    <div class="register-input mb-4">
+                        <i class="far fa-user"></i>
+                        {{ form.username }}  
+                    </div>
+                    {{ form.username.errors }}
+
+                    <label for="{{ form.password.id_for_label }}">Password</label>
+                    <div class="register-input mb-3">
+                        <i class="fas fa-lock"></i>
+                        {{ form.password }}
+                    </div>
+                    {{ form.password.errors }}
+
+                    <div class="check mb-3">
+                        <a href="{% url 'forgot_password' %}">Forgotten Password?</a>
+                    </div>
+                    <div class="register-cta mb-3">
+                        <button type="submit" class="main-btn w-100 py-3">Sign In</button>
+                    </div>
+                    <div class="query">
+                        <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script src="{% static 'assets/js/register.js' %}"></script>
+</body>
+</html>
